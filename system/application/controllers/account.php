@@ -23,10 +23,10 @@ class Account extends Controller {
                 $this->load->view('account/register', $data);
             } else {
                 if ($this->dx_auth->email_activation) {
-                    $data['message'] = 'You have successfully registered. Check your email address to activate your account.';
+                    $data['message'] = '<p>You have successfully registered. Check your email address to activate your account.</p>';
                 }
                 else {
-                    $data['message'] = 'You have successfully registered. '.anchor('account/login', 'Login');
+                    $data['message'] = '<p>You have successfully registered. ' . anchor('session/login', 'Login') . '</p>';
                 }
                 $this->load->view('session/login', $data);
             }
@@ -54,7 +54,7 @@ class Account extends Controller {
 
         // Validate rules and call forgot password function
         if ($this->form_validation->run() AND $this->dx_auth->forgot_password($this->input->post('username'))) {
-            $data['message'] = 'An email has been sent to your email with instructions with how to activate your new password.';
+            $data['message'] = '<p>An email has been sent to your email with instructions with how to activate your new password.</p>';
         }
         $this->load->view('account/forgot_password', $data);
     }
@@ -67,10 +67,10 @@ class Account extends Controller {
 
         // Reset password
         if ($this->dx_auth->reset_password($username, $key)) {
-            $data['message'] = 'You have successfully reset you password, '.anchor(site_url($this->dx_auth->login_uri), 'Login');
+            $data['message'] = '<p>You have successfully reset you password, '.anchor(site_url($this->dx_auth->login_uri), 'Login'). '</p>';
         }
         else {
-            $data['message'] = 'Reset failed. Your username and key are incorrect. Please check your email again and follow the instructions.';
+            $data['message'] = '<p>Reset failed. Your username and key are incorrect. Please check your email again and follow the instructions.</p>';
         }
         $this->load->view('account/reset_password', $data);
     }
