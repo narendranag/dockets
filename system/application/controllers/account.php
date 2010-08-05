@@ -1,6 +1,9 @@
 <?php
 
 class Account extends Controller {
+    
+    var $new_user_info = null;
+
     function Account() {
         parent::Controller();
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
@@ -16,9 +19,10 @@ class Account extends Controller {
             $this->dx_auth->captcha();
             $this->load->view('account/register', $data);
         } else {
-            if($this->dx_auth->register($this->input->post('username'), $this->input->post('password'), $this->input->post('email')) == false) {
-                $data['message'] = '<p>Either username or password is incorrect</p>';
-                echo $this->dx_auth->get_error_msg();
+            $this->new_user_info = $this->dx_auth->register($this->input->post('username'), $this->input->post('password'), $this->input->post('email'));
+            print_r($this->new_user_info);
+            if($this->new_user_info == false) {
+                $data['message'] = '<p>'.$this->dx_auth->get_error_msg().'</p>';
                 $this->dx_auth->captcha();
                 $this->load->view('account/register', $data);
             } else {
@@ -27,6 +31,7 @@ class Account extends Controller {
                 }
                 else {
                     $data['message'] = '<p>You have successfully registered. ' . anchor('session/login', 'Login') . '</p>';
+                    $this->treasure->initialize($user->id);
                 }
                 $this->load->view('session/login', $data);
             }

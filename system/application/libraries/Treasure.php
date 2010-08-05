@@ -31,13 +31,13 @@ class Treasure {
         $user->get_by_id($user_id);
         $gold->where_related_user('id', $user->id)->get();
         if($gold->amount == NULL) {
-            return false;
+            $gold->amount = 5000;
         }
         else {
             $gold->amount = $gold->amount + 10;
-            $gold->save();
-            return $gold->amount;;
         }
+        $gold->save();
+        return $gold->amount;;
     }
 
     function decrease($user_id) {
@@ -51,18 +51,15 @@ class Treasure {
         $user->get_by_id($user_id);
         $gold->where_related_user('id', $user->id)->get();
         if($gold->amount == NULL || $gold->amount <= 0) {
-            return false;
+            $gold->amount = 5000;
         }
         else {
             $gold->amount -= 10;
             if($gold->amount < 5000) {
                 $gold->amount = 5000;
             }
-            $gold->save();
-            return $gold->amount;
         }
+        $gold->save();
+        return $gold->amount;
     }
-
-
-
 }

@@ -78,8 +78,8 @@ class Dockets extends Application {
             echo "error: no id supplied";
             return false;
         }
-        $this->load->library('bitly');
 
+        $this->load->library('bitly');
 
         $this->form_validation->set_rules('name' , 'Task Name', 'required|trim|callback_check_task');
         $this->form_validation->set_rules('due' , 'Due Date', 'trim');
