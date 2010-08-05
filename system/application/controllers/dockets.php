@@ -21,10 +21,8 @@ class Dockets extends Application {
         $user = new User();
         $user->get_by_id($this->dx_auth->get_user_id());
 
-        $gold = new Gold();
+        $data['gold_amount'] = $this->treasure->get_amount($this->dx_auth->get_user_id());
 
-        $gold->where_related_user('id', $user->id)->get();
-        $data['gold_amount'] = $gold->amount;
         $docket->clear();
 
         if($docket->where('user_id', $this->dx_auth->get_user_id())->where('completed', 0)->count()) {
@@ -49,10 +47,8 @@ class Dockets extends Application {
         $user = new User();
         $user->get_by_id($this->dx_auth->get_user_id());
 
-        $gold = new Gold();
+        $data['gold_amount'] = $this->treasure->get_amount($this->dx_auth->get_user_id());
 
-        $gold->where_related_user('id', $user->id)->get();
-        $data['gold_amount'] = $gold->amount;
         if($this->form_validation->run() == false) {
             
         } else {
@@ -89,11 +85,7 @@ class Dockets extends Application {
         $user = new User();
         $user->get_by_id($this->dx_auth->get_user_id());
 
-        $gold = new Gold();
-
-        $gold->where_related_user('id', $user->id)->get();
-        $data['gold_amount'] = $gold->amount;
-
+        $data['gold_amount'] = $this->treasure->get_amount($this->dx_auth->get_user_id());
 
         if(!$docket->where('user_id', $this->dx_auth->get_user_id())->where('id', $id)->count()) {
             redirect('dockets');
