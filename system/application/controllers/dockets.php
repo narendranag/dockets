@@ -78,7 +78,7 @@ class Dockets extends Application {
         $this->load->library('bitly');
 
         $this->form_validation->set_rules('name' , 'Task Name', 'required|trim|callback_check_task');
-        $this->form_validation->set_rules('due' , 'Due Date', 'trim');
+        $this->form_validation->set_rules('due' , 'Due Date', 'trim|valid_date[d-m-y,-]');
         $data = array();
         $docket = new Docket();
         $task = new Task();
