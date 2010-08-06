@@ -13,7 +13,7 @@
         <label>Password</label>
         <input type="password" name="password" id="password" /> <span class="small"><?php echo anchor('account/forgot_password','Forgot Password?'); ?></span><br/>
         <?php echo form_error('password'); ?>
-        <input type="checkbox" name="remember" id="ßremember" /> <span class="quiet small">Remember Me for 2 Weeks</span>
+        <input type="checkbox" name="remember" id="remember" /> <span class="quiet small">Remember Me for 2 Weeks</span>
         <hr class="space" />
         <input type="submit" name="login" id="login" value="login" class="" /> <span class="inline strong" ><?php echo anchor('account/register', 'New User? Register here!');?></span>
         <?php echo form_close(); ?>
