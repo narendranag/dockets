@@ -7,7 +7,7 @@ $(document).ready(function(){
             dataType: 'json',
             data: 'id='+$(this).attr('rel'),
             success: function(data) {
-                var html = '<li><span class="quiet"><input type="checkbox" checked="checked" class="completed_task" rel="'+data.id+'"> '+ data.name+'</span> <span class="edit_link small"><a href="'+base_url+'dockets/view/'+data.docket_id+'#" rel="'+data.id+'">edit</a></span></li>';
+                var html = '<li><span class="quiet"><input type="checkbox" checked="checked" class="completed_task" rel="'+data.id+'"> '+ data.name+'</span></li>';
                 $('#completed_tasks').append(html);
                 o.parent().parent().remove();
                 $('span#gold').html(data.gold);
@@ -22,7 +22,7 @@ $(document).ready(function(){
             dataType: 'json',
             data: 'id='+$(this).attr('rel'),
             success: function(data) {
-                var html = '<li><span class="loud"><input type="checkbox" class="pending_task" rel="'+ data.id +'"> '+data.name+'</span> <span class="edit_link small"><a href="'+base_url+'dockets/view/'+data.docket_id+'#" rel="'+data.id+'">edit</a></span></li>';;
+                var html = '<li><span class="loud"><input type="checkbox" class="pending_task" rel="'+ data.id +'"> '+data.name+'</span></li>';;
                 $('#pending_tasks').append(html);
                 o.parent().parent().remove();
                 $('span#gold').html(data.gold);
@@ -41,7 +41,7 @@ $(document).ready(function(){
         });
     })
 
-    $('.tasks li').live('mouseover', function(){
+    /*$('.tasks li').live('mouseover', function(){
         $('.edit_link' , this).css('display', 'inline');
     }).live('mouseout', function(){
         $('.edit_link' , this).css('display', 'none');
@@ -49,7 +49,7 @@ $(document).ready(function(){
 
     $('.edit_link').live('click',function(){
         alert('as');
-    });
+    });*/
 
     Date.firstDayOfWeek = 0;
     Date.format = 'dd-mm-yyyy';

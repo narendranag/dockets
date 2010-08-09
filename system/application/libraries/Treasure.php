@@ -35,7 +35,7 @@ class Treasure {
             $gold->save($user);
         }
         else {
-            $gold->amount = $gold->amount + 10;
+            $gold->amount += 10;
             $gold->save();
         }
         return $gold->amount;

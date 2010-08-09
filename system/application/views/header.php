@@ -39,7 +39,7 @@
                     if($this->dx_auth->is_logged_in()) {
                         ;
                     } else {
-                        echo ' | ' . anchor('session/login', 'Login') . ' | ' . anchor('session/register', 'Register');
+                        echo ' | ' . anchor('session/login', 'Login') . ' | ' . anchor('account/register', 'Register');
                     }
                 ?>
                 </span>
