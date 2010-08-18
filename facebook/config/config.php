@@ -23,7 +23,7 @@ $config['base_url']	= "http://localhost/dockets/";
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "fb.php";
+$config['index_page'] = "index.php";
 
 /*
 |--------------------------------------------------------------------------

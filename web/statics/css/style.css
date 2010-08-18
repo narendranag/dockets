@@ -1,0 +1,60 @@
+body {
+    font-size: .85em;
+    font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a {
+}
+label {
+    display: block;
+}
+textarea {
+    width: 300px;
+    height: 70px;
+}
+.strong {
+    font-weight: bold;
+}
+.inline {
+    display: inline;
+}
+.block {display: block;}
+.rightAlign {
+    text-align: right;
+}
+.header {
+    
+}
+p.error {
+    background: none;
+    border: none;
+    color: #cc0000;
+    padding: 0;
+}
+p.success {
+    background: none;
+    border: none;
+    color: #00aa00;
+    padding: 0;
+}
+ul.dockets, ul.tasks {
+    list-style: none;
+    padding: 0;
+}
+ul.dockets li, ul.tasks li {
+    padding: 0; margin: 0;
+}
+ul.dockets li a {
+    font-size: 1.1em;
+
+}
+ul#pending_tasks {
+    font-size: 1.1em;
+}
+ul#completed_tasks {
+    font-size: .9em;
+}
+
+/* RGBA Buttons */
+input[type=button], input[type=submit] {
+    padding: .2em .9em;
+}
