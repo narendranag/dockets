@@ -2,20 +2,21 @@
 <div class="container">
     <div class="span-6 leftColumn">
         <p><?php echo anchor('dockets/', 'Back to your Dockets');?> or <?php echo anchor('dockets/create', 'Create a new one');?></p>
-        <p>
-        <?php echo anchor('help/creating', 'Creating a Docket'); ?><br />
-        <?php echo anchor('help/sharing', 'Sharing a Docket'); ?><br />
-        <?php echo anchor('help/sharing', 'Sharing a Docket'); ?></p>
     </div>
     <div class="span-17 prepend-1 last rightColumn">
 
-        <h2>Welcome To Help Section</h2>
-        <p>Here you'll be able to learn about Dockets  like anything. </p>
-        <h3>Creating a new Docket</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nisl lectus, blandit ut dapibus at, aliquet et nulla.</p>
-        <p>Quisque facilisis pulvinar dictum. Donec nisi sem, pharetra eget pretium a, ultricies eget erat. Aliquam erat volutpat. Cras at bibendum orci. Aenean pharetra dapibus purus et elementum.</p>
-
-        <p>Curabitur rhoncus, metus ullamcorper sagittis laoreet, mi lectus congue leo, a sagittis neque nisl id elit. Maecenas gravida odio eu mi sollicitudin facilisis. Sed viverra, diam hendrerit molestie elementum, tortor purus ullamcorper magna, id condimentum arcu diam non nisl. Donec semper tellus eu metus cursus condimentum. Vestibulum sit amet est in metus fermentum viverra et eget turpis. Fusce et lacus lectus, ac interdum diam. Praesent facilisis fringilla felis, et tempor nunc fermentum sed. Morbi varius blandit dolor sed laoreet. Etiam commodo lorem lacinia ipsum congue vitae aliquet est volutpat. Vestibulum rutrum est quis diam convallis commodo ac at libero. </p>
+        <h2>Welcome To Dockets Help Section</h2>
+        <p>We have compiled a small FAQ for you guys to get started.</p>
+        <h3>What is Dockets?</h3>
+        <p>Dockets is a small yet powerful web based application which will allow you to manage your tasks. In plain English, It's a TO-DO list manager .</p>
+        <h3>TODO List? Not Again!</h3>
+        <p>If this is what you are feeling then this feeling is mutual :) We are also sick and tired of every other todo list manage out there. Therefore we are creating one on our own.</p>
+        <h3>Alright, But WTF Gold coins are doing here?</h3>
+        <p>This is a little secret we need to maintain :) Be patient, Yo'll soon know. For now,</p>
+            <ul>
+                <li>You'll get 5000 gold coins for registering</li>
+                <li>You gain 10 gold coins for completing every task</li>
+            </ul>
 
     </div>
 </div>

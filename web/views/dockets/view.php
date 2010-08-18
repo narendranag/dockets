@@ -2,7 +2,7 @@
 <div class="container">
     <div class="span-6 leftColumn">
         <?php
-            echo '<h4><img src="'.gravatar_url($this->dx_auth->get_user_email(), 'X', '45').'" align="left" />';
+            echo '<h4><img src="'.gravatar_url($this->dx_auth->get_user_email(), 'X', '45').'" align="left" width="45" height="45" />';
             echo '&nbsp;<span class="strong loud">' . $this->dx_auth->get_username() . '</span><br/><span class="small">&nbsp;&nbsp;'. anchor('session/logout', 'logout') .'</span></h4>';
             echo '<p>Total Gold Coins: <span id="gold">'.$gold_amount.'</span></p>'
         ?>
