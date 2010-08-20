@@ -76,9 +76,8 @@ class Dockets extends Application {
         }
 
         $this->load->library('bitly');
-
         $this->form_validation->set_rules('name' , 'Task Name', 'required|trim|callback_check_task');
-        $this->form_validation->set_rules('due' , 'Due Date', 'trim|valid_date[d-m-y,-]');
+        $this->form_validation->set_rules('due' , 'Due Date', 'trim|callback_check_date|required');
         $data = array();
         $docket = new Docket();
         $task = new Task();
@@ -157,5 +156,28 @@ class Dockets extends Application {
             return true;
         }
     }
+
+    function check_date($str)
+    {
+        if ( preg_match("/([0-9]{1,2})-([0-9]{1,2})-([0-9]{4})/", $str) )
+        {
+            $arr = split("-", $str);    // splitting the array
+            
+            $dd = $arr[0];            // first element of the array is year
+            $mm = $arr[1];              // second element is month
+            $yyyy = $arr[2];              // third element is days
+            //$this->form_validation->set_message('check_task', 'You already have a task with same title');
+            if(! checkdate($mm, $dd, $yyyy) ) {
+            	$this->form_validation->set_message('check_date', 'The %s field must be entered in dd-mm-yyyy format.');
+                return false;
+            } else return true;
+        }
+        else
+        {
+            $this->form_validation->set_message('check_date', 'The %s field must be entered in dd-mm-yyyy format.');
+            return FALSE;
+        }
+    }
+
 }
 ?>

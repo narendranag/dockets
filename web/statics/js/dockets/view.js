@@ -1,8 +1,10 @@
 $(document).ready(function(){
+    var img = $('<img />').attr('src', base_uri + 'web/statics/images/loading.gif');
     $('.pending_task').live('click', function(){
         var o = $(this);
+        $(this).attr('disabled', 'disabled').parent().parent().append(img);
         $.ajax({
-            url : base_url + 'ajax/complete_task',
+            url : base_url() + 'ajax/complete_task',
             type: 'post',
             dataType: 'json',
             data: 'id='+$(this).attr('rel'),
@@ -16,8 +18,9 @@ $(document).ready(function(){
     })
     $('.completed_task').live('click', function(){
         var o = $(this);
+        $(this).attr('disabled', 'disabled').parent().parent().append(img);
         $.ajax({
-            url : base_url + 'ajax/uncomplete_task',
+            url : base_url() + 'ajax/uncomplete_task',
             type: 'post',
             dataType: 'json',
             data: 'id='+$(this).attr('rel'),
@@ -30,8 +33,9 @@ $(document).ready(function(){
         });
     })
     $('#share_docket').click(function(){
+        $(this).html(img);
         $.ajax({
-            url : base_url + 'ajax/toggle_docket_sharing',
+            url : base_url() + 'ajax/toggle_docket_sharing',
             type: 'post',
             dataType: 'json',
             data: 'id='+$(this).attr('rel'),

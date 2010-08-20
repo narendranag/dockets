@@ -5,7 +5,7 @@
     </div>
     <div class="span-17 prepend-1 append-bottom last rightColumn">
         <h2>Login</h2>
-        <?php echo $message; ?>
+        <p><?php echo $message; ?></p>
         <?php echo form_open('session/login'); ?>
         <label>Username or Email</label>
         <input type="text" name="username" id="username" value="<?php echo set_value('username'); ?>" class="title" />

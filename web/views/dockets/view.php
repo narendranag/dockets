@@ -26,7 +26,7 @@
         <label>Add a task</label>
         <input type="text" name="name" id="name" class="title" /><br/>
         <?php echo form_error('name'); ?>
-        <input type="submit" name="submit" id="submit" value="add" class="" /> <input type="text" name="due" disabled="disabled" id="due" class="inline" value="<?php echo set_value('due', date('d-m-Y', strtotime('+10 day'))); ?>"/>
+        <input type="submit" name="submit" id="submit" value="add" class="" /> <input type="text" name="due" id="due" class="inline" value="<?php echo set_value('due', date('d-m-Y', strtotime('+10 day'))); ?>"/>
         <?php echo form_error('due'); ?>
         <?php echo form_close(); ?>
         <hr class="space" />
