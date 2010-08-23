@@ -4,7 +4,8 @@
         <?php
             echo '<h4><img src="'.gravatar_url($this->dx_auth->get_user_email(), 'X', '45').'" align="left" width="45" height="45" />';
             echo '&nbsp;<span class="strong loud">' . $this->dx_auth->get_username() . '</span><br/><span class="small">&nbsp;&nbsp;'. anchor('session/logout', 'logout') .'</span></h4>';
-            echo '<p>Total Gold Coins: <span id="gold">'.$gold_amount.'</span></p>'
+            echo '<p>Total Gold Coins: <span id="gold">'.$gold_amount.'</span></p>';
+            echo '<p class="small">'.anchor('account/manage', 'Manage Account'). '</p>';
         ?>
         <hr />
         <p><?php echo anchor('dockets/', 'Back to your Dockets');?> or <?php echo anchor('dockets/create', 'Create a new one');?></p>

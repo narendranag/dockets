@@ -52,4 +52,16 @@ $config = array(
                         'label' => 'Username or Email address'
                 ),
         ),
+        'account/manage' => array(
+                array(
+                        'field' => 'name',
+                        'rules' => 'required|trim',
+                        'label' => 'Name'
+                ),
+                array(
+                        'field' => 'email',
+                        'rules' => 'required|trim|valid_email',
+                        'label' => 'Email Address'
+                )
+        ),
 );

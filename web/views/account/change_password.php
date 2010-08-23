@@ -3,7 +3,7 @@
     <div class="span-6 leftColumn">
         <p></p>
     </div>
-    <div class="span-17 prepend-1 last rightColumn">
+    <div class="span-17 prepend-1 append-bottom last rightColumn">
         <h2>Change Password</h2>
         <?php echo $message; ?>
         <?php echo form_open('account/change_password'); ?>

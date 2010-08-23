@@ -94,7 +94,7 @@ class Account extends Controller {
             // Validate rules and change password
             if ($val->run() AND $this->dx_auth->change_password($val->set_value('old_password'), $val->set_value('new_password'))) {
                 $data['message'] = '<p>Your password has successfully been changed. You can now login.</p>';
-                $this->load->view('account/login', $data);
+                $this->load->view('session/login', $data);
             }
             else {
                 $this->load->view('account/change_password', $data);
@@ -102,9 +102,22 @@ class Account extends Controller {
         }
         else {
             // Redirect to login page
-            redirect('account/login');
+            redirect('session/login');
         }
     }
+
+    function manage() {
+        $data['message'] = null;
+        if ($this->dx_auth->is_logged_in()) {
+            $data['email'] = $this->dx_auth->get_user_email();
+            if($this->form_validation->run() == false) {
+                $this->load->view('account/manage', $data);
+            }
+        } else {
+            redirect('session/login');
+        }
+    }
+
     function username_check($username) {
         $result = $this->dx_auth->is_username_available($username);
         if ( ! $result) {
