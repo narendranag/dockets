@@ -69,9 +69,9 @@ $config['DX_salt'] = '';
 |
 */
  
-$config['DX_email_activation'] = FALSE;
+$config['DX_email_activation'] = TRUE;
 $config['DX_email_activation_expire'] = 60*60*24*2; 
-$config['DX_email_account_details'] = FALSE;
+$config['DX_email_account_details'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -187,8 +187,8 @@ $config['DX_recaptcha_private_key'] = '';
 $config['DX_deny_uri'] = '/session/deny/';
 $config['DX_login_uri'] = '/session/login/';
 $config['DX_banned_uri'] = '/session/banned/';
-$config['DX_activate_uri'] = '/session/activate/';
-$config['DX_reset_password_uri'] = '/session/reset_password/';
+$config['DX_activate_uri'] = '/account/activate/';
+$config['DX_reset_password_uri'] = '/account/reset_password/';
 
 
 /*
@@ -207,10 +207,10 @@ $config['DX_reset_password_uri'] = '/session/reset_password/';
 
 // Registration
 $config['DX_allow_registration'] = TRUE; 
-$config['DX_captcha_registration'] = TRUE;
+$config['DX_captcha_registration'] = FALSE;
 
 // Login
-$config['DX_captcha_login'] = TRUE;
+$config['DX_captcha_login'] = FALSE;
 
 // URI Locations
 $config['DX_logout_uri'] = '/session/logout/';

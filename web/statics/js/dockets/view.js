@@ -1,9 +1,10 @@
 $(document).ready(function(){
-    var img = $('<img />').attr('src', base_uri + 'web/statics/images/loading.gif');
+    var img = $('<img />').attr('src', base_uri + 'web/statics/images/loading.gif').attr('class', 'progress');
     $('.pending_task').live('click', function(){
         var o = $(this);
         $(this).attr('disabled', 'disabled').parent().parent().append(img);
         $.ajax({
+            cache: false,
             url : base_url() + 'ajax/complete_task',
             type: 'post',
             dataType: 'json',
@@ -20,6 +21,7 @@ $(document).ready(function(){
         var o = $(this);
         $(this).attr('disabled', 'disabled').parent().parent().append(img);
         $.ajax({
+            cache: false,
             url : base_url() + 'ajax/uncomplete_task',
             type: 'post',
             dataType: 'json',
@@ -35,6 +37,7 @@ $(document).ready(function(){
     $('#share_docket').click(function(){
         $(this).html(img);
         $.ajax({
+            cache: false,
             url : base_url() + 'ajax/toggle_docket_sharing',
             type: 'post',
             dataType: 'json',
@@ -55,8 +58,11 @@ $(document).ready(function(){
         alert('as');
     });*/
 
-    Date.firstDayOfWeek = 0;
-    Date.format = 'dd-mm-yyyy';
-    $('#due').datePicker();
-
+    $('#due').dateinput({
+    	format: 'yyyy-mm-dd'
+   	});
+	
+	$('a.email_send').fancybox({
+		'type' : 'inline'
+	});
 })

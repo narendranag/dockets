@@ -37,13 +37,7 @@ $config = array(
                         'field' => 'email',
                         'rules' => 'required|trim|valid_email|callback_email_check',
                         'label' => 'Email'
-                ),
-                array(
-                        'field' => 'captcha',
-                        'rules' => 'trim|required|callback_captcha_check',
-                        'label' => 'Confirmation Code'
-                ),
-
+                )
         ),
         'account/forgot_password' => array(
                 array(
@@ -58,10 +52,22 @@ $config = array(
                         'rules' => 'required|trim',
                         'label' => 'Name'
                 ),
+            array(
+                        'field' => 'website',
+                        'rules' => 'trim|valid_url',
+                        'label' => 'Website'
+                )
+        ),
+        'account/activate' => array(
                 array(
-                        'field' => 'email',
-                        'rules' => 'required|trim|valid_email',
-                        'label' => 'Email Address'
+                        'field' => 'username',
+                        'rules' => 'trim|required',
+                        'label' => 'Username'
+                ),
+            array(
+                        'field' => 'key',
+                        'rules' => 'trim|required',
+                        'label' => 'Activation Key'
                 )
         ),
 );

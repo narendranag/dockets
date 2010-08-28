@@ -10,48 +10,71 @@ class Account extends Controller {
     }
 
     function index() {
-//        redirect('account/login');
+        redirect('account/manage');
     }
 
     function register() {
         $data['message'] = null;
+        
         if($this->form_validation->run() == false) {
-            $this->dx_auth->captcha();
             $this->load->view('account/register', $data);
         } else {
             $this->new_user_info = $this->dx_auth->register($this->input->post('username'), $this->input->post('password'), $this->input->post('email'));
-            print_r($this->new_user_info);
             if($this->new_user_info == false) {
                 $data['message'] = '<p>'.$this->dx_auth->get_error_msg().'</p>';
-                $this->dx_auth->captcha();
                 $this->load->view('account/register', $data);
             } else {
                 if ($this->dx_auth->email_activation) {
                     $data['message'] = '<p>You have successfully registered. Check your email address to activate your account.</p>';
+                    redirect('account/activate');
                 }
                 else {
-                    $data['message'] = '<p>You have successfully registered. ' . anchor('session/login', 'Login') . '</p>';
-                    $this->treasure->initialize($user->id);
+                    $data['message'] = '<p>You have successfully registered. Enter details to login.</p>';
+                    $this->load->view('session/login', $data);
                 }
-                $this->load->view('session/login', $data);
             }
-
         }
     }
 
     function activate() {
+        $data['message'] = null;
+        $username = null;
+        $key = null;
         // Get username and key
-        $username = $this->uri->segment(3);
-        $key = $this->uri->segment(4);
+        if($this->input->post('username')) {
+            $username = $this->input->post('username');
+        } elseif($this->uri->segment(3)) {
+            $username = $this->uri->segment(3);
+        }
 
-        // Activate user
-        if ($this->dx_auth->activate($username, $key)) {
-            $data['message'] = '<p>Your account have been successfully activated. You can now login to your account.';
+        if($this->input->post('key')) {
+            $key = $this->input->post('key');
+        } elseif($this->uri->segment(3)) {
+            $key = $this->uri->segment(4);
         }
-        else {
-            $data['message'] = '<p>The activation code you entered was incorrect. Please check your email again.</p>';
+
+        if($username && $key) {
+            if ($this->dx_auth->activate($username, $key)) {
+                $data['message'] = '<p>Your account have been successfully activated. You can now login to your account.</p>';
+            }
+            else {
+                $data['message'] = '<p>The activation code you entered was incorrect. Please check your email again.</p>';
+            }
+            $this->load->view('session/login', $data);
+            return;
         }
-        $this->load->view('session/login', $data);
+
+        if($this->form_validation->run() == false) {
+            $this->load->view('account/activate' , $data);
+        } else {
+            if ($this->dx_auth->activate($username, $key)) {
+                $data['message'] = '<p>Your account have been successfully activated. You can now login to your account.</p>';
+            }
+            else {
+                $data['message'] = '<p>The activation code you entered was incorrect. Please check your email again.</p>';
+            }
+            $this->load->view('session/login', $data);
+        }
     }
 
     function forgot_password() {
@@ -108,10 +131,25 @@ class Account extends Controller {
 
     function manage() {
         $data['message'] = null;
+        $countries = new Country();
+        $user_profile = new userProfile();
+        $countries->get();
+        foreach($countries->all as $country) {
+            $data['countries'][$country->id] = $country->name;
+        }
+        $data['user_profile'] = $user_profile->get_by_id($this->dx_auth->get_user_id());
         if ($this->dx_auth->is_logged_in()) {
             $data['email'] = $this->dx_auth->get_user_email();
             if($this->form_validation->run() == false) {
                 $this->load->view('account/manage', $data);
+            } else {
+                $user_profile->country_id = $this->input->post('country');
+                $user_profile->website = $this->input->post('website');
+                $user_profile->name = $this->input->post('name');
+                $user_profile->save();
+                $data['message'] = '<p class="notice fade">Profile Details saved</p>';
+                $this->load->view('account/manage', $data);
+
             }
         } else {
             redirect('session/login');

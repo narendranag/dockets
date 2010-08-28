@@ -2,347 +2,144 @@
     display:none;
 }
 
-table.jCalendar {
-	border: 1px solid #000;
-	background: #aaa;
-    border-collapse: separate;
-    border-spacing: 2px;
-}
-table.jCalendar th {
-	background: #333;
-	color: #fff;
-	font-weight: bold;
-	padding: 3px 5px;
+/* For the details, see: http://flowplayer.org/tools/dateinput/index.html#skinning */
+
+/* the input field */
+.date {
 }
 
-table.jCalendar td {
-	background: #ccc;
-	color: #000;
-	padding: 3px 5px;
-	text-align: center;
-}
-table.jCalendar td.other-month {
-	background: #ddd;
-	color: #aaa;
-}
-table.jCalendar td.today {
-	background: #666;
-	color: #fff;
-}
-table.jCalendar td.selected {
-	background: #f66;
-	color: #fff;
-}
-table.jCalendar td.selected.dp-hover {
-	background: #f33;
-	color: #fff;
-}
-table.jCalendar td.dp-hover,
-table.jCalendar tr.activeWeekHover td {
-	background: #fff;
-	color: #000;
-}
-table.jCalendar tr.selectedWeek td {
-	background: #f66;
-	color: #fff;
-}
-table.jCalendar td.disabled, table.jCalendar td.disabled.dp-hover {
-	background: #bbb;
-	color: #888;
-}
-table.jCalendar td.unselectable,
-table.jCalendar td.unselectable:hover,
-table.jCalendar td.unselectable.dp-hover {
-	background: #bbb;
-	color: #888;
+/* calendar root element */
+#calroot {
+	/* place on top of other elements. set a higher value if nessessary */
+	z-index:1;
+	
+	margin-top:-1px;
+	width:198px;
+	padding:2px;
+	background-color:#fff;
+	font-size:11px;
+	border:1px solid #ccc;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-box-shadow: 0 0 15px #666;
+	-webkit-box-shadow: 0 0 15px #666;	
 }
 
-/* For the popup */
+/* head. contains title, prev/next month controls and possible month/year selectors */
+#calhead {	
+	padding:2px 0;
+	height:22px;
+} 
 
-/* NOTE - you will probably want to style a.dp-choose-date - see how I did it in demo.css */
-
-div.dp-popup {
-	position: relative;
-	background: #ccc;
-	font-size: 10px;
-	font-family: arial, sans-serif;
-	padding: 2px;
-	width: 171px;
-	line-height: 1.2em;
-}
-div#dp-popup {
-	position: absolute;
-	z-index: 199;
-}
-div.dp-popup h2 {
-	font-size: 12px;
-	text-align: center;
-	margin: 2px 0;
-	padding: 0;
-}
-a#dp-close {
-	font-size: 11px;
-	padding: 4px 0;
-	text-align: center;
-	display: block;
-}
-a#dp-close:hover {
-	text-decoration: underline;
-}
-div.dp-popup a {
-	color: #000;
-	text-decoration: none;
-	padding: 3px 2px 0;
-}
-div.dp-popup div.dp-nav-prev {
-	position: absolute;
-	top: 2px;
-	left: 4px;
-	width: 100px;
-}
-div.dp-popup div.dp-nav-prev a {
-	float: left;
-}
-/* Opera needs the rules to be this specific otherwise it doesn't change the cursor back to pointer after you have disabled and re-enabled a link */
-div.dp-popup div.dp-nav-prev a, div.dp-popup div.dp-nav-next a {
-	cursor: pointer;
-}
-div.dp-popup div.dp-nav-prev a.disabled, div.dp-popup div.dp-nav-next a.disabled {
-	cursor: default;
-}
-div.dp-popup div.dp-nav-next {
-	position: absolute;
-	top: 2px;
-	right: 4px;
-	width: 100px;
-}
-div.dp-popup div.dp-nav-next a {
-	float: right;
-}
-div.dp-popup a.disabled {
-	cursor: default;
-	color: #aaa;
-}
-div.dp-popup td {
-	cursor: pointer;
-}
-div.dp-popup td.disabled {
-	cursor: default;
-}
-div.datepicker {
-	position: relative;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	width: 196px;
-	height: 147px;
-	position: absolute;
-	cursor: default;
-	top: 0;
-	left: 0;
-	display: none;
-}
-.datepickerContainer {
-	background: #121212;
-	position: absolute;
-	top: 10px;
-	left: 10px;
-}
-.datepickerBorderT {
-	position: absolute;
-	left: 10px;
-	top: 0;
-	right: 10px;
-	height: 10px;
-	background: url(../images/datepicker_t.png);
-}
-.datepickerBorderB {
-	position: absolute;
-	left: 10px;
-	bottom: 0;
-	right: 10px;
-	height: 10px;
-	background: url(../images/datepicker_b.png);
-}
-.datepickerBorderL {
-	position: absolute;
-	left: 0;
-	bottom: 10px;
-	top: 10px;
-	width: 10px;
-	background: url(../images/datepicker_l.png);
-}
-.datepickerBorderR {
-	position: absolute;
-	right: 0;
-	bottom: 10px;
-	top: 10px;
-	width: 10px;
-	background: url(../images/datepicker_r.png);
-}
-.datepickerBorderTL {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 10px;
-	height: 10px;
-	background: url(../images/datepicker_tl.png);
-}
-.datepickerBorderTR {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 10px;
-	height: 10px;
-	background: url(../images/datepicker_tr.png);
-}
-.datepickerBorderBL {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 10px;
-	height: 10px;
-	background: url(../images/datepicker_bl.png);
-}
-.datepickerBorderBR {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 10px;
-	height: 10px;
-	background: url(../images/datepicker_br.png);
-}
-.datepickerHidden {
-	display: none;
-}
-div.datepicker table {
-	border-collapse:collapse;
-}
-div.datepicker a {
-	color: #eee;
-	text-decoration: none;
-	cursor: default;
-	outline: none;
-}
-div.datepicker table td {
-	text-align: right;
-	padding: 0;
-	margin: 0;
-}
-div.datepicker th {
-	text-align: center;
-	color: #999;
-	font-weight: normal;
-}
-div.datepicker tbody th {
-	text-align: left;
-}
-div.datepicker tbody a {
-	display: block;
-}
-.datepickerDays a {
-	width: 20px;
-	line-height: 16px;
-	height: 16px;
-	padding-right: 2px;
-}
-.datepickerYears a,
-.datepickerMonths a{
-	width: 44px;
-	line-height: 36px;
-	height: 36px;
-	text-align: center;
-}
-td.datepickerNotInMonth a {
-	color: #666;
-}
-tbody.datepickerDays td.datepickerSelected{
-	background: #136A9F;
-}
-tbody.datepickerDays td.datepickerNotInMonth.datepickerSelected {
-	background: #17384d;
-}
-tbody.datepickerYears td.datepickerSelected,
-tbody.datepickerMonths td.datepickerSelected{
-	background: #17384d;
-}
-div.datepicker a:hover,
-div.datepicker a:hover {
-	color: #88c5eb;
-}
-div.datepicker td.datepickerNotInMonth a:hover {
-	color: #999;
-}
-div.datepicker tbody th {
-	text-align: left;
-}
-.datepickerSpace div {
-	width: 20px;
-}
-.datepickerGoNext a,
-.datepickerGoPrev a,
-.datepickerMonth a {
-	text-align: center;
-	height: 20px;
-	line-height: 20px;
-}
-.datepickerGoNext a {
-	float: right;
-	width: 20px;
-}
-.datepickerGoPrev a {
-	float: left;
-	width: 20px;
-}
-table.datepickerViewDays tbody.datepickerMonths,
-table.datepickerViewDays tbody.datepickerYears {
-	display: none;
-}
-table.datepickerViewMonths tbody.datepickerDays,
-table.datepickerViewMonths tbody.datepickerYears,
-table.datepickerViewMonths tr.datepickerDoW {
-	display: none;
-}
-table.datepickerViewYears tbody.datepickerDays,
-table.datepickerViewYears tbody.datepickerMonths,
-table.datepickerViewYears tr.datepickerDoW {
-	display: none;
-}
-td.datepickerDisabled a,
-td.datepickerDisabled.datepickerNotInMonth a{
-	color: #333;
-}
-td.datepickerDisabled a:hover {
-	color: #333;
-}
-td.datepickerSpecial a {
-	background: #700;
-}
-td.datepickerSpecial.datepickerSelected a {
-	background: #a00;
+#caltitle {
+	font-size:14px;
+	color:#0150D1;	
+	float:left;
+	text-align:center;
+	width:155px;
+	line-height:20px;
+	text-shadow:0 1px 0 #ddd;
 }
 
-/* located in demo.css and creates a little calendar icon
- * instead of a text link for "Choose date"
- */
-a.dp-choose-date {
-	width: 20px;
-	height: 20px;
-	padding: 0px;
-	margin: 5px 2px 0px;
-	display: inline-block;
-	text-indent: -2000px;
-	overflow: hidden;
-	background: url(../../images/icons/calendar.png) no-repeat;
-}
-a.dp-choose-date.dp-disabled {
-	background-position: 0 -20px;
-	cursor: default;
-}
-/* makes the input field shorter once the date picker code
- * has run (to allow space for the calendar icon
- */
-input.dp-applied {
-	width: 140px;
-
+#calnext, #calprev {
+	display:block;
+	width:20px;
+	height:20px;
+	background:transparent url(../../images/prev.gif) no-repeat scroll center center;
+	float:left;
+	cursor:pointer;
 }
 
+#calnext {
+	background-image:url(../../images/next.gif);
+	float:right;
+}
+
+#calprev.caldisabled, #calnext.caldisabled {
+	visibility:hidden;	
+}
+
+/* year/month selector */
+#caltitle select {
+	font-size:10px;	
+}
+
+/* names of the days */
+#caldays {
+	height:14px;
+	border-bottom:1px solid #ddd;
+}
+
+#caldays span {
+	display:block;
+	float:left;
+	width:28px;
+	text-align:center;
+}
+
+/* container for weeks */
+#calweeks {
+	background-color:#fff;
+	margin-top:4px;
+}
+
+/* single week */
+.calweek {
+	clear:left;
+	height:22px;
+}
+
+/* single day */
+.calweek a {
+	display:block;
+	float:left;
+	width:27px;
+	height:20px;
+	text-decoration:none;
+	font-size:11px;
+	margin-left:1px;
+	text-align:center;
+	line-height:20px;
+	color:#666;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px; 		
+} 
+
+/* different states */
+.calweek a:hover, .calfocus {
+	background-color:#ddd;
+}
+
+/* sunday */
+a.calsun {
+	color:red;		
+}
+
+/* offmonth day */
+a.caloff {
+	color:#ccc;		
+}
+
+a.caloff:hover {
+	background-color:rgb(245, 245, 250);		
+}
+
+
+/* unselecteble day */
+a.caldisabled {
+	background-color:#efefef !important;
+	color:#ccc	!important;
+	cursor:default;
+}
+
+/* current day */
+#calcurrent {
+	background-color:#498CE2;
+	color:#fff;
+}
+
+/* today */
+#caltoday {
+	background-color:#333;
+	color:#fff;
+}

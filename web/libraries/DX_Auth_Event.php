@@ -24,6 +24,9 @@ class DX_Auth_Event
 		
 		// Create user profile
 		$this->ci->user_profile->create_profile($user_id);
+
+                //Add Treasure
+                $this->treasure->initialize($user_id);
 	}
 	
 	// This event occurs right after user login
@@ -49,6 +52,7 @@ class DX_Auth_Event
 		
 		// Delete user profile
 		$this->ci->user_profile->delete_profile($user_id);
+
 	}
 	
 	// This event occurs when check_uri_permissions() function in DX_Auth is called

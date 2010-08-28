@@ -11,8 +11,9 @@
         <p><?php echo anchor('dockets/create', 'Create a new Docket'); ?></p>
         <?php $this->load->view('left_column'); ?>
     </div>
-    <div class="span-17 prepend-1 last rightColumn">
+    <div class="span-13 prepend-1 rightColumn">
         <h2>Your Dockets</h2>
+        <p class="small quiet">This is your dashboard. All your pending and completed dockets will be listed here. To create a new Docket, click on 'Create a new Docket' from left column.</p>
         <?php echo $message; ?>
         <ul class="dockets" id="pending_dockets">
             <?php
@@ -37,5 +38,6 @@
             }
         ?>
     </div>
+    <div class="span-4 last"></div>
 </div>
 <?php $this->load->view('footer'); ?>

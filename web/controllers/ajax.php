@@ -85,4 +85,8 @@ class Ajax extends Application {
         $result['status'] = ($docket->shared)? 'Public' : 'Private';
         echo json_encode($result);
     }
+    
+    function email_send() {
+    	$this->load->view('ajax/email_send');
+    }
 }

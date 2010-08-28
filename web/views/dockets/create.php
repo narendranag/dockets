@@ -17,9 +17,11 @@
         <?php echo $message; ?>
         <?php echo form_open('dockets/create'); ?>
         <input type="text" name="name" id="name" class="title" />
+        <span class="small quiet block">Enter the name of the docket you want to create.</span>
         <?php echo form_error('name'); ?>
         <label>Descrption <span class="quiet">(optional)</span></label>
         <textarea name="description" id="description" ></textarea>
+        <span class="small quiet block">If you want, you can give some description about this docket.</span>
         <?php echo form_error('name'); ?>
         <input type="submit" name="submit" id="submit" value="create" class="block" />
         <?php echo form_close(); ?>

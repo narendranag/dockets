@@ -12,9 +12,7 @@
         <link href="statics/css/print.css" rel="stylesheet" type="text/css" media="print"/>
 
         <script src="statics/js/jquery-1.4.2.min.js"></script>
-        <script type="text/javascript" src="statics/js/date.js"></script>
-        <script type="text/javascript" src="statics/js/datepicker.js"></script>
-
+		<script src="http://cdn.jquerytools.org/1.2.4/form/jquery.tools.min.js"></script>
         <script src="statics/js/site.js"></script>
 
         <title>Dockets</title>
