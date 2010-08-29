@@ -20,8 +20,8 @@
         ?></a><br/>
         <img class="icon" src="<?php echo base_url() ?>web/statics/images/icons/globe.png" />
         Public URL: <?php echo anchor($docket->short_url); ?><br/>
-        <img class="icon" src="<?php echo base_url() ?>web/statics/images/icons/mail-send.png" /> <?php echo anchor('dockets/view/'.$docket->id . '/#', 'Email this docket to a friend', "class='email_send'"); ?></span></p>
-        <p><img class="icon" src="<?php echo base_url() ?>web/statics/images/icons/cross.png" /> <?php echo anchor('dockets/view/'.$docket->id . '/#', 'Delete this Docket'); ?></p>
+        <img class="icon" src="<?php echo base_url() ?>web/statics/images/icons/mail-send.png" /> <?php echo anchor('ajax/email_docket/'.$docket->id, 'Email this docket to a friend', "id='email_send'"); ?></span></p>
+        <p><img class="icon" src="<?php echo base_url() ?>web/statics/images/icons/cross.png" /> <?php echo anchor('ajax/delete_docket/'.$docket->id, 'Delete this Docket', "id=delete_docket"); ?></p>
         <?php $this->load->view('left_column'); ?>
     </div>
     <div class="span-17 prepend-1 last rightColumn">
@@ -45,7 +45,7 @@
         <ul class="tasks" id="pending_tasks">
             <?php
                 foreach($pending_tasks as $task) {
-                    echo '<li><span class="loud"><input type="checkbox" rel="'.$task->id.'" class="pending_task" /> '.$task->name.'</span></li>';
+                    echo '<li><span class="loud"><input type="checkbox" rel="'.$task->id.'" class="pending_task" /> '.$task->name.' <span class="quiet small">('.$task->due.')</span></span></li>';
                 }
             ?>
         </ul>
@@ -58,7 +58,7 @@
         <ul class="tasks" id="completed_tasks">
             <?php
                 foreach($completed_tasks as $task) {
-                    echo '<li><span class="quiet"><input type="checkbox" rel="'.$task->id.'" class="completed_task" checked="checked"/> '.$task->name.'</span></li>';
+                    echo '<li><span class="quiet"><input type="checkbox" rel="'.$task->id.'" class="completed_task" checked="checked"/> '.$task->name.' <span class="quiet small">('.$task->due.')</span></span></li>';
                 }
             ?>
         </ul>

@@ -10,7 +10,7 @@ $(document).ready(function(){
             dataType: 'json',
             data: 'id='+$(this).attr('rel'),
             success: function(data) {
-                var html = '<li><span class="quiet"><input type="checkbox" checked="checked" class="completed_task" rel="'+data.id+'"> '+ data.name+'</span></li>';
+                var html = '<li><span class="quiet"><input type="checkbox" checked="checked" class="completed_task" rel="'+data.id+'"> '+ data.name+' <span class="quiet small">('+data.due+')</span></span></li>';
                 $('#completed_tasks').append(html);
                 o.parent().parent().remove();
                 $('span#gold').html(data.gold);
@@ -27,7 +27,8 @@ $(document).ready(function(){
             dataType: 'json',
             data: 'id='+$(this).attr('rel'),
             success: function(data) {
-                var html = '<li><span class="loud"><input type="checkbox" class="pending_task" rel="'+ data.id +'"> '+data.name+'</span></li>';;
+                var html = '<li><span class="loud"><input type="checkbox" class="pending_task" rel="'+ data.id +'"> '+data.name+' <span class="quiet small">('+data.due+')</span></span></li>';
+                ;
                 $('#pending_tasks').append(html);
                 o.parent().parent().remove();
                 $('span#gold').html(data.gold);
@@ -48,21 +49,23 @@ $(document).ready(function(){
         });
     })
 
-    /*$('.tasks li').live('mouseover', function(){
-        $('.edit_link' , this).css('display', 'inline');
-    }).live('mouseout', function(){
-        $('.edit_link' , this).css('display', 'none');
-    });
-
-    $('.edit_link').live('click',function(){
-        alert('as');
-    });*/
-
     $('#due').dateinput({
-    	format: 'yyyy-mm-dd'
-   	});
+        format: 'yyyy-mm-dd'
+    });
 	
-	$('a.email_send').fancybox({
-		'type' : 'inline'
-	});
+    $('a#email_send').fancybox({
+
+        'autoScale' : true,
+        'transitionIn'  : 'none',
+        'transitionOut' : 'none',
+        'type'  : 'ajax'
+    });
+        
+    $('a#delete_docket').fancybox({
+
+        'autoScale' : true,
+        'transitionIn'  : 'none',
+        'transitionOut' : 'none',
+        'type'  : 'ajax'
+    });
 })

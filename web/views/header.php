@@ -10,9 +10,10 @@
         <link href="statics/css/screen.css" rel="stylesheet" type="text/css" media="screen,projection"/>
         <link href="statics/css/style.css" rel="stylesheet" type="text/css" media="screen,projection"/>
         <link href="statics/css/print.css" rel="stylesheet" type="text/css" media="print"/>
+        <link href="statics/fancybox/jquery.fancybox-1.3.1.css" rel="stylesheet" type="text/css" media="screen,projection"/>
 
         <script src="statics/js/jquery-1.4.2.min.js"></script>
-		<script src="http://cdn.jquerytools.org/1.2.4/form/jquery.tools.min.js"></script>
+        <script src="http://cdn.jquerytools.org/1.2.4/form/jquery.tools.min.js"></script>
         <script src="statics/js/site.js"></script>
 
         <title>Dockets</title>

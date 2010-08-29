@@ -19,6 +19,10 @@ textarea {
     width: auto;
     padding: 0; margin: 0;
 }
+.progress {
+    margin-left: .3em;
+    margin-bottom: .1em;
+}
 .strong {
     font-weight: bold;
 }

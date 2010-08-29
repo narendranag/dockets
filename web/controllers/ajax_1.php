@@ -95,11 +95,10 @@ class Ajax extends Application {
             $data['message'] = '<p class="success">This Docket has been successfully emailed to '.$this->input->post('email').'</p>';
 
             $this->load->library('profile');
-            $from_name = $this->profile->get_name($this->dx_auth->get_user_id());
-            $this->email->from($this->dx_auth->get_user_email(), $from_name);
+            $this->email->from($this->dx_auth->get_user_email(), $this->profile->get_name($this->dx_auth->get_user_id()));
             $this->email->to($this->input->post('email'));
 
-            $this->email->subject($from_name . ' wants to share this Docket with you');
+            $this->email->subject('Dockets App');
             $message = "Hi There
 
 %s wants to share the following Docket with you
@@ -116,7 +115,7 @@ Dockets Team";
                 $status = ($task->pending)?"Pending":"Completed";
                 $task_list .= '> ' . $task->name . " (".$task->due.") [".$status."]" . "\n\r";
             }
-            $message = sprintf($message, $from_name, $task_list);
+            $message = sprintf($message, $this->dx_auth->get_username(), $task_list);
             $this->email->message($message);
             $this->email->send();
             echo $this->email->print_debugger();
