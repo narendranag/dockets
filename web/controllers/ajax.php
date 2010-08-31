@@ -119,7 +119,6 @@ Dockets Team";
             $message = sprintf($message, $from_name, $task_list);
             $this->email->message($message);
             $this->email->send();
-            echo $this->email->print_debugger();
         }
         $this->load->view('ajax/email_docket', $data);
     }
